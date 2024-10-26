@@ -5,6 +5,13 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 
+enum Camera_Movement {
+    FORWARD,
+    BACKWARD,
+    LEFT,
+    RIGHT
+};
+
 struct Camera {
 
     // camera position and direction
@@ -26,7 +33,7 @@ struct Camera {
     Camera(glm::vec3 position, glm::vec3 up, float yaw, float pitch);
 
     glm::mat4 GetViewMatrix();
-    void ProcessKeyboard(float deltaTime, bool forward, bool backward, bool left, bool right);
+    void ProcessKeyboard(float deltaTime, Camera_Movement direction);
     void ProcessMouse(float xOffset, float yOffset);
 
 private:
