@@ -1,7 +1,8 @@
-#include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include "camera.h"
+#include "model.h"
+#include <iostream>
 #include <string>
 #include <sstream>
 
@@ -41,7 +42,7 @@ void processInput(GLFWwindow* window , Camera& camera, float deltaTime) {
 void renderScene(Camera& camera, int width, int height) {
     glm::mat4 view = camera.GetViewMatrix();  // Get the updated view matrix from the camera
     glm::mat4 projection = glm::perspective(glm::radians(camera.GetZoom()), (float)width / height, 0.1f, 100.0f);
-    
+
     // Render particles and other objects here
 }
 
@@ -81,6 +82,9 @@ int main() {
     }
 
 
+    Mesh* mesh = new Mesh();
+    mesh->loadFromObj("models/sphere.obj");
+
     glViewport(0, 0, 800, 600);
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -114,7 +118,7 @@ int main() {
 
         processInput(window, camera, deltaTime);
 
-        glClearColor((float)45/256, (float)45/256, (float)45/256, 0.5f);
+        glClearColor((float)25.6/256, (float)25.6/256, (float)25.6/256, 0.5f);
         glClear(GL_COLOR_BUFFER_BIT);
 
         renderScene(camera, screenWidth, screenHeight);
