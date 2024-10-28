@@ -40,7 +40,8 @@ void processInput(GLFWwindow* window , Camera& camera, float deltaTime) {
 
 void renderScene(Camera& camera, int width, int height) {
     glm::mat4 view = camera.GetViewMatrix();  // Get the updated view matrix from the camera
-    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)width / height, 0.1f, 100.0f);
+    glm::mat4 projection = glm::perspective(glm::radians(camera.GetZoom()), (float)width / height, 0.1f, 100.0f);
+    
     // Render particles and other objects here
 }
 
