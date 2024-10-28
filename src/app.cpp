@@ -40,6 +40,10 @@ void processInput(GLFWwindow* window, float deltaTime) {
         camera.ProcessKeyboard(deltaTime, FORWARD);
     }
 
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
+        camera.ProcessKeyboard(deltaTime, UP);
+    }
+
 
 }
 
@@ -149,15 +153,15 @@ int main() {
 
     // frame timing variables
     int frameCount = 0;
-    float lastFrame = 0.0f;
+    double lastTime = glfwGetTime();
     float fpsTimer = 0.0f;
 
     // Render loop
     while(!glfwWindowShouldClose(window)) {
 
-        float currentFrame = glfwGetTime();
-        float deltaTime = currentFrame - lastFrame;
-        lastFrame = currentFrame;
+        double currentTime = glfwGetTime();
+        float deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
 
         frameCount++;
         fpsTimer += deltaTime;
