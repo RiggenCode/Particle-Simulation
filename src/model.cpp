@@ -55,12 +55,20 @@ bool Mesh::loadFromObj(const std::string& filename) {
                 unsigned int vertexIndex, uvIndex, normalIndex;
                 viss >> vertexIndex >> uvIndex >> normalIndex;
 
-                vertexIndex--; uvIndex; normalIndex--;
+                if (vertexIndex == 0 || vertexIndex > tempPositions.size() ||
+                    normalIndex == 0 || normalIndex > tempNormals.size() ||
+                    uvIndex == 0 || uvIndex > tempTexCoords.size()) {
+                    std::cerr << "Error: Index out of bounds in OBJ file: "
+                              << "vertexIndex: " << vertexIndex << ", "
+                              << "uvIndex: " << uvIndex << ", "
+                              << "normalIndex: " << normalIndex << std::endl;
+                    return false;
+                }
 
                 Vertex v;
-                v.position = tempPositions[vertexIndex];
-                v.normal = tempNormals[normalIndex];
-                v.texCoords = tempTexCoords[uvIndex];
+                v.position = tempPositions[vertexIndex - 1];
+                v.normal = tempNormals[normalIndex - 1];
+                v.texCoords = tempTexCoords[uvIndex - 1];
 
                 vertices.push_back(v);
                 indices.push_back(vertices.size() - 1);
