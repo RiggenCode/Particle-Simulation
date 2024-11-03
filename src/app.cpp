@@ -44,6 +44,9 @@ void processInput(GLFWwindow* window, float deltaTime) {
         camera.ProcessKeyboard(deltaTime, UP);
     }
 
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS) {
+        camera.ProcessKeyboard(deltaTime, DOWN);
+    }
 
 }
 
@@ -73,7 +76,7 @@ void renderScene(Camera& camera, int width, int height, Shader& shader, Mesh* me
     // Set light properties
     glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
     glm::vec3 lightColor(1.0f, 1.0f, 1.0f);
-    glm::vec3 objectColor(1.0f, 0.5f, 0.31f);
+    glm::vec3 objectColor(0.0f, 0.8f, 0.8f);
 
     shader.setVec3("lightPos", lightPos);
     shader.setVec3("viewPos", camera.GetPosition());

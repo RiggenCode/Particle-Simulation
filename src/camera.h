@@ -10,6 +10,7 @@ enum Camera_Movement {
     LEFT,
     RIGHT,
     UP,
+    DOWN
 };
 
 class Camera {
