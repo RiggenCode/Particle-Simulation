@@ -33,11 +33,11 @@ public:
     const glm::vec3& getPostion() const { return position; }
     const glm::vec3& getRotation() const { return rotation; }
     const glm::vec3& getScale() const { return scale; }
-    
+
     void translate(const glm::vec3& offset);
     void rotate(const glm::vec3& angles);
     void scaleBy(const glm::vec3& factor);
-    
+
 
 private:
     void setupMesh();

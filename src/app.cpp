@@ -135,7 +135,7 @@ int main() {
     }
 
     // Create and initialize mesh
-    Mesh* mesh = new Mesh();
+    auto* mesh = new Mesh();
     mesh->loadFromObj("/home/riggen/code/particle_simulation/models/sphere.obj");
     if(!mesh->loadFromObj("/home/riggen/code/particle_simulation/models/sphere.obj")) {
         std::cerr << "Failed to load mesh" << std::endl;
@@ -190,7 +190,7 @@ int main() {
         glfwPollEvents();
 
     }
-    
+
     delete mesh;
     glfwTerminate();
     return 0;

@@ -1,6 +1,6 @@
 #include "model.h"
 #include <fstream>
-#include <sstream> 
+#include <sstream>
 #include <iostream>
 #include <algorithm>
 
@@ -19,7 +19,7 @@ Mesh::~Mesh() {
 
 bool Mesh::loadFromObj(const std::string& filename) {
     std::vector<glm::vec3> tempPositions;
-    std::vector<glm::vec3> tempNormals; 
+    std::vector<glm::vec3> tempNormals;
     std::vector<glm::vec2> tempTexCoords;
 
     std::ifstream file(filename);
@@ -108,7 +108,7 @@ void Mesh::render(GLuint shaderProgram) {
 
     GLint modelLoc = glGetUniformLocation(shaderProgram, "model");
     glUniformMatrix4fv(modelLoc, 1, GL_FALSE, &modelMatrix[0][0]);
-    
+
     glBindVertexArray(VAO);
     glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
